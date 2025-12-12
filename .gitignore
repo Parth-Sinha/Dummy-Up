@@ -1,0 +1,7 @@
+.env
+#add more files or directories to ignore below this line
+# Add venv and __pycache__ under every subfolder to .gitignore
+__pycache__/
+*/__pycache__/
+venv/
+*/venv/
