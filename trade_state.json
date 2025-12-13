@@ -5,24 +5,6 @@
         "entry_price": 1548.7,
         "entry_time": 1765517117.3705564
     },
-    "NSE_EQ:GOLDIAM": {
-        "qty": 1117,
-        "order_id": "251212110634975",
-        "entry_price": 372.9,
-        "entry_time": 1765517796.1080604
-    },
-    "NSE_EQ:KITEX": {
-        "qty": 2120,
-        "order_id": "251212111813409",
-        "entry_price": 196.48,
-        "entry_time": 1765518494.5463762
-    },
-    "NSE_EQ:63MOONS": {
-        "qty": 544,
-        "order_id": "251212113341919",
-        "entry_price": 765.75,
-        "entry_time": 1765519423.0571103
-    },
     "NSE_EQ:MOREPENLAB": {
         "qty": 10115,
         "order_id": "251212114001248",
