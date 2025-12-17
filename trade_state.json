@@ -1,20 +1,62 @@
 {
-    "NSE_EQ:RELIANCE": {
-        "qty": 124,
-        "order_id": "251216152332799",
-        "entry_price": 1542.4,
-        "entry_time": 1765878813.127691
+    "NSE_EQ:CHAMBLFERT": {
+        "qty": 376,
+        "order_id": "251217124115724",
+        "entry_price": 443.0,
+        "entry_time": 1765955475.8243752
     },
-    "NSE_EQ:DEEPAKFERT": {
-        "qty": 136,
-        "order_id": "251217092445869",
-        "entry_price": 1224.7,
-        "entry_time": 1765943687.061443
+    "NSE_EQ:GODREJCP": {
+        "qty": 141,
+        "order_id": "251217125910346",
+        "entry_price": 1174.9,
+        "entry_time": 1765956550.4938872
+    },
+    "NSE_EQ:POCL": {
+        "qty": 131,
+        "order_id": "251217130030558",
+        "entry_price": 1271.5,
+        "entry_time": 1765956630.6639237
+    },
+    "NSE_EQ:ASHOKLEY": {
+        "qty": 1007,
+        "order_id": "251217130730362",
+        "entry_price": 165.35,
+        "entry_time": 1765957050.4735844
+    },
+    "NSE_EQ:NATCOPHARM": {
+        "qty": 180,
+        "order_id": "251217131910427",
+        "entry_price": 924.9,
+        "entry_time": 1765957750.5364504
+    },
+    "NSE_EQ:AARTIIND": {
+        "qty": 456,
+        "order_id": "251217132231011",
+        "entry_price": 365.0,
+        "entry_time": 1765957951.1229582
+    },
+    "NSE_EQ:MARUTI": {
+        "qty": 10,
+        "order_id": "251217132601479",
+        "entry_price": 16392.0,
+        "entry_time": 1765958161.6295335
     },
     "NSE_EQ:KNRCON": {
-        "qty": 1152,
-        "order_id": "251217095522604",
-        "entry_price": 144.62,
-        "entry_time": 1765945523.4271111
+        "qty": 1165,
+        "order_id": "251217132810535",
+        "entry_price": 143.0,
+        "entry_time": 1765958290.6963148
+    },
+    "NSE_EQ:KITEX": {
+        "qty": 895,
+        "order_id": "251217132926054",
+        "entry_price": 186.14,
+        "entry_time": 1765958366.175497
+    },
+    "NSE_EQ:MOREPENLAB": {
+        "qty": 4154,
+        "order_id": "251217133110782",
+        "entry_price": 40.12,
+        "entry_time": 1765958470.9025564
     }
 }
