@@ -1,20 +1,20 @@
 {
     "NSE_EQ:RELIANCE": {
-        "qty": 269,
-        "order_id": "251212105516237",
-        "entry_price": 1548.7,
-        "entry_time": 1765517117.3705564
+        "qty": 124,
+        "order_id": "251216152332799",
+        "entry_price": 1542.4,
+        "entry_time": 1765878813.127691
     },
-    "NSE_EQ:MOREPENLAB": {
-        "qty": 10115,
-        "order_id": "251212114001248",
-        "entry_price": 41.19,
-        "entry_time": 1765519802.367452
+    "NSE_EQ:DEEPAKFERT": {
+        "qty": 136,
+        "order_id": "251217092445869",
+        "entry_price": 1224.7,
+        "entry_time": 1765943687.061443
     },
-    "NSE_EQ:SUVEN": {
-        "qty": 2478,
-        "order_id": "251212122402207",
-        "entry_price": 168.09,
-        "entry_time": 1765522443.3827882
+    "NSE_EQ:KNRCON": {
+        "qty": 1152,
+        "order_id": "251217095522604",
+        "entry_price": 144.62,
+        "entry_time": 1765945523.4271111
     }
 }

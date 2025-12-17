@@ -10,11 +10,19 @@ import shutil
 import traceback
 from datetime import datetime
 from dotenv import load_dotenv
+import ssl
+# Bypass SSL Verification globally
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
 
 # Local Imports
 from Upstox.upstox import upstox
 from core.data_feed import RobustDataFeed
-from Strategies.rsi_chandelier import RSIChandelierStrategy
+from Strategies.rsi_chandelier_tight import RSIChandelierStrategy
 from trade_logger import TradeRecorder
 from Upstox.base.constants import ExchangeCode
 from Upstox.base.constants import Product
@@ -40,7 +48,7 @@ SYMBOLS_MAP = {
     # "NSE_EQ:AXISBANK": "NSE_EQ|INE238A01034",
     # "NSE_EQ:HINDUNILVR": "NSE_EQ|INE030A01027",
     # "NSE_EQ:LT": "NSE_EQ|INE018A01030",
-    # "NSE_EQ:BHARTIARTL": "NSE_EQ|INE397D01024",
+    "NSE_EQ:BHARTIARTL": "NSE_EQ|INE397D01024",
     # "NSE_EQ:ITC": "NSE_EQ|INE154A01025",
     # "NSE_EQ:ASIANPAINT": "NSE_EQ|INE021A01026",
     # "NSE_EQ:MARICO": "NSE_EQ|INE196A01026",
@@ -57,6 +65,27 @@ SYMBOLS_MAP = {
     "NSE_EQ:MOREPENLAB": "NSE_EQ|INE083A01026",
     "NSE_EQ:KITEX": "NSE_EQ|INE602G01020",
     "NSE_EQ:PURVA": "NSE_EQ|INE323I01011",
+    #Add Ashok leyland,knrcon, indigo, ace, aartiind
+    "NSE_EQ:ASHOKLEY": "NSE_EQ|INE208A01029",
+    "NSE_EQ:KNRCON": "NSE_EQ|INE634I01029",
+    "NSE_EQ:INDIGO": "NSE_EQ|INE646L01027",
+    "NSE_EQ:ACE": "NSE_EQ|INE731H01025",
+    "NSE_EQ:AARTIIND": "NSE_EQ|INE769A01020",
+    #Add MRPL, CHAMBLFERT, NATCOPHARM, DEEPAKFERT, BHARATIHEXA, SUPREMEIND
+    "NSE_EQ:MRPL": "NSE_EQ|INE103A01014",
+    "NSE_EQ:CHAMBLFERT": "NSE_EQ|INE085A01013",
+    "NSE_EQ:NATCOPHARM": "NSE_EQ|INE987B01026",
+    "NSE_EQ:DEEPAKFERT": "NSE_EQ|INE501A01019",
+    "NSE_EQ:BHARATIHEXA": "NSE_EQ|INE343G01021",
+    "NSE_EQ:SUPREMEIND": "NSE_EQ|INE195A01028",
+    #ADD BHARTIARTL, GMRAIRPORT, GODREJCP
+    "NSE_EQ:GMRAIRPORT": "NSE_EQ|INE776C01039",
+    "NSE_EQ:GODREJCP": "NSE_EQ|INE102D01028",
+    #AHLUCONT, ASAHISONG, NIRAJ, AMNPLST GIVE ISIN CODE FOR THESE
+    "NSE_EQ:AHLUCONT": "NSE_EQ|INE758C01029",
+    "NSE_EQ:ASAHISONG": "NSE_EQ|INE228I01012",
+    "NSE_EQ:NIRAJ": "NSE_EQ|INE368I01016",
+    "NSE_EQ:AMNPLST": "NSE_EQ|INE275D01022",
     # Add more symbols here
 }
 
@@ -402,7 +431,10 @@ def main():
                 try:
                     # Calculate Account Metrics
                     realized_pnl = logger.get_total_pnl()
-                    
+
+                    # Treat capital + realized PnL as current equity and then back out margin used
+                    account_balance = ALLOCATED_CAPITAL + realized_pnl
+
                     used_margin = 0.0
                     for s in SYMBOLS_MAP:
                         q = trade_manager.get_holdings_qty(s)
@@ -410,12 +442,14 @@ def main():
                         if q > 0:
                             used_margin += (q * e)
                             
-                    available_cash = ALLOCATED_CAPITAL + realized_pnl - used_margin
+                    # Cash that is still free to deploy
+                    available_cash = account_balance - used_margin
 
                     dashboard_data = {
                         "last_updated": datetime.now().strftime('%H:%M:%S'),
                         "account": {
                             "capital": ALLOCATED_CAPITAL,
+                            "balance": account_balance,
                             "realized_pnl": realized_pnl,
                             "used_margin": used_margin,
                             "available_cash": available_cash

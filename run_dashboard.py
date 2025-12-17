@@ -27,11 +27,12 @@ def main():
             avail_cash = account.get("available_cash", 0.0)
             realized_pnl = account.get("realized_pnl", 0.0)
             used_margin = account.get("used_margin", 0.0)
+            account_balance = account.get("balance", account.get("capital", 0.0) + realized_pnl)
             
             # Header
             print(f"=====================================================================================================")
             print(f" 📊 OEMS LIVE DASHBOARD | Last Update: {last_updated}")
-            print(f" 💵 CASH: {avail_cash:,.2f} | 📉 USED MARGIN: {used_margin:,.2f} | 💰 REALIZED P&L: {realized_pnl:,.2f}")
+            print(f" 🏦 BAL: {account_balance:,.2f} | 💵 CASH: {avail_cash:,.2f} | 📉 USED MARGIN: {used_margin:,.2f} | 💰 REALIZED P&L: {realized_pnl:,.2f}")
             print(f"=====================================================================================================")
             print(f"{'SYMBOL':<15} | {'LTP':<10} | {'RSI':<8} | {'SL':<10} | {'POS':<6} | {'ENTRY':<10} | {'P&L':<10} | {'TIME':<10}")
             print(f"-----------------------------------------------------------------------------------------------------")
